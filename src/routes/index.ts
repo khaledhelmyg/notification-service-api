@@ -1,8 +1,8 @@
 import express from "express";
-import authRoutes from "./auth.routes";
+import notificationRoutes from "./notification.routes";
 
 const router = express.Router();
 
-router.use("/auth", authRoutes);
+router.use("/notifications", notificationRoutes);
 
 export default router;

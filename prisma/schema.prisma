@@ -1,0 +1,29 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+/// Notification schema
+model Notification {
+  id          String      @id @default(uuid())
+  type        NotificationType
+  title       String
+  body        String
+  isRead      Boolean     @default(false)
+  userId      String?     // just a foreign key
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+/// Enum for notification type
+enum NotificationType {
+  SYSTEM     // general system alert
+  CHAT       // new chat message
+  REMINDER   // reminders
+  WARNING    // warnings/errors
+}

@@ -1,13 +1,13 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-export default {
-  NODE_ENV: process.env.NODE_ENV || "dev",
-  APP_PORT:
-    process.env.NODE_ENV === "prod"
-      ? process.env.LIVE_PORT
-      : process.env.TEST_PORT,
+export const env = {
+  NODE_ENV: process.env.NODE_ENV || "dev",  
+  APP_PORT: process.env.NODE_ENV === "prod" ? process.env.LIVE_PORT:process.env.TEST_PORT,
   APP_HOST: process.env.APP_HOST,
+  CONSUL_PORT: process.env.CONSUL_PORT,
+  CONSUL_HOST: process.env.CONSUL_HOST,
+  KAFKA_BROKER: process.env.KAFKA_BROKER,
   // MONGO_URI: process.env.MONGO_URI,
   // MONGO_URI_TEST: process.env.MONGO_URI_TEST,
   // DB_URL:

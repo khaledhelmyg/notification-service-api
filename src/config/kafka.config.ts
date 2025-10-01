@@ -1,12 +1,13 @@
 import { Kafka } from "kafkajs";
+import {env} from "./env.config";
 
 const kafka = new Kafka({
-  clientId: "auth-service", // غير الاسم لكل service
-  brokers: ["localhost:9092"], // من docker-compose
+  clientId: "notification-service", // غير الاسم لكل service
+  brokers: [`${env.KAFKA_BROKER}`], // من docker-compose
 });
 
 export const kafkaProducer = kafka.producer();
-export const kafkaConsumer = kafka.consumer({ groupId: "auth-group" });
+export const kafkaConsumer = kafka.consumer({ groupId: "notification-group" });
 
 export async function initKafka() {
   await kafkaProducer.connect();
