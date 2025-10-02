@@ -42,7 +42,7 @@ async function registerService(
   try {
     await consulClient.agent.service.register(serviceConfig);
     console.log(`✅ ${serviceName} registered with Consul`);
-  } catch (err) {
+  } catch (err: any) {
     console.error(`❌ Failed to register ${serviceName}:`, err);
   }
 }
@@ -52,7 +52,7 @@ async function deregisterService(serviceName: string) {
   try {
     await consulClient.agent.service.deregister(serviceName);
     console.log(`👋 ${serviceName} deregistered from Consul`);
-  } catch (err) {
+  } catch (err: any) {
     console.error(`❌ Failed to deregister ${serviceName}:`, err);
   }
 }
@@ -69,7 +69,7 @@ process.on("SIGINT", async () => {
   process.exit(0);
 });
 
-process.on('SIGTERM', async () => {
-  await deregisterService('notification-service');
+process.on("SIGTERM", async () => {
+  await deregisterService("notification-service");
   process.exit(0);
 });

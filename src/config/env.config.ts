@@ -8,6 +8,7 @@ export const env = {
   CONSUL_PORT: process.env.CONSUL_PORT,
   CONSUL_HOST: process.env.CONSUL_HOST,
   KAFKA_BROKER: process.env.KAFKA_BROKER,
+  KONG_ADMIN_URL: process.env.KONG_ADMIN_URL,
   // MONGO_URI: process.env.MONGO_URI,
   // MONGO_URI_TEST: process.env.MONGO_URI_TEST,
   // DB_URL:
